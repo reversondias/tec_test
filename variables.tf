@@ -40,8 +40,12 @@ variable "key_pair_name" {
     default = ""
 }
 
-variable "arn_s3" {
+variable "s3_name" {
     type = string
-    description = "ARN from S3 that EC2 will access."
-    default = "arn:aws:s3:::meu-s3-reverson"
+    description = "S3 name that EC2 will access."
+}
+
+variable "aws_account_id" {
+    type = string
+    description = "AWS account ID to build ARN string for grant access."
 }
