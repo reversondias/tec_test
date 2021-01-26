@@ -25,7 +25,7 @@ variable "ec2_size_type" {
 variable "ec2_name" {
     type = string
     description = "The name to EC2"
-    default = "ec2-my-app"
+    default = "ec2-app"
 }
 
 variable "letters_to_zone" {
@@ -48,4 +48,10 @@ variable "s3_name" {
 variable "aws_account_id" {
     type = string
     description = "AWS account ID to build ARN string for grant access."
+}
+
+variable "count_instance" {
+  type = string
+  description = "The total instance."
+  default = ""
 }
