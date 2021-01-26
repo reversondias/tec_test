@@ -22,10 +22,6 @@ data "aws_security_groups" "default_vpc_sg_id" {
 
   filter {
     name   = "vpc-id"
-    values = [aws_vpc.private_vpc.id]
+    values = [aws_vpc.company_vpc.id]
   }
 }
-
-# data "aws_security_group" "default_vpc_sg_name" {
-#   id = data.aws_security_groups.default_vpc_sg_id.ids[0]
-# }
