@@ -102,6 +102,7 @@ resource "aws_security_group" "ec2_app_sg" {
     to_port     = 443
     protocol    = "tcp"
     cidr_blocks = [aws_vpc.company_vpc.cidr_block]
+    security_groups = [aws_security_group.lb_app_sg.id]
   }
 
   ingress {
@@ -110,6 +111,29 @@ resource "aws_security_group" "ec2_app_sg" {
     to_port     = 80
     protocol    = "tcp"
     cidr_blocks = [aws_vpc.company_vpc.cidr_block]
+    security_groups = [aws_security_group.lb_app_sg.id]
   }
 
+}
+
+resource "aws_security_group" "lb_app_sg" {
+  name        = "ALB APP SG"
+  description = "This SG for LB APP"
+  vpc_id      = aws_vpc.company_vpc.id
+
+  ingress {
+    description = "TLS from VPC"
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    description = "Non-TLS from VPC"
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 }
