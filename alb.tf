@@ -2,16 +2,11 @@ resource "aws_lb" "lb_app" {
   name               = "lb-app"
   internal           = false
   load_balancer_type = "application"
-  security_groups    = [aws_security_group.lb_app_sg.id]
+  security_groups    = [aws_security_group.lb_app_sg.id,data.aws_security_groups.default_vpc_sg_id.ids[0]]
   subnets            = aws_subnet.public_subnet.*.id 
 
   enable_deletion_protection = false
 
-#   access_logs {
-#     bucket  = aws_s3_bucket.lb_logs.bucket
-#     prefix  = "test-lb"
-#     enabled = true
-#   }
 }
 
 resource "aws_lb_target_group" "tg_group_app" {
