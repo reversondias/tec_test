@@ -23,7 +23,7 @@ resource "aws_iam_instance_profile" "ec2-acess-profile" {
   role = aws_iam_role.s3_role.name
 }
 
-resource "aws_iam_role_policy" "s3_role_policy" {
+resource "aws_iam_policy" "s3_role_policy" {
   name = "s3-access-role-policy"
   description = "This policy allow EC2 full access one bucket S3"
 
