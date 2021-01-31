@@ -1,5 +1,5 @@
 resource "aws_instance" "web_app" {
-  count         = var.count_instance == "" ? 0 : tonumber(var.count_instance)
+  count         = var.count_instance == "" ? 1 : tonumber(var.count_instance)
   ami           = data.aws_ami.ami.id
   instance_type = var.ec2_size_type
 
