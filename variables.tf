@@ -50,3 +50,15 @@ variable "count_instance" {
   description = "The total instance."
   default = ""
 }
+
+variable "health_check_interval" {
+  type = number
+  description = "Amount in sec of interval between checks."
+  default = 35
+}
+
+variable "health_check_timeout" {
+  type = string
+  description = "Amount in sec of timeout for each checks."
+  default = 30
+}
